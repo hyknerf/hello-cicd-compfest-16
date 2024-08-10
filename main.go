@@ -1,23 +1,17 @@
 package main
 
-import "net/http"
+import (
+	"net/http"
+
+	"github.com/hyknerf/hello-cicd-compfest-16/api"
+)
 
 func main() {
 	mux := http.NewServeMux()
-	mux.HandleFunc("/hello/{id}", handler)
+	mux.HandleFunc("/hello/{id}", api.Handler)
 
 	err := http.ListenAndServe(":9000", mux)
 	if err != nil {
 		panic(err)
 	}
-}
-
-func handler(w http.ResponseWriter, r *http.Request) {
-	name := r.PathValue("id")
-
-	_, _ = w.Write([]byte(sayHello(name)))
-}
-
-func sayHello(name string) string {
-	return "Hello " + name + "!"
 }
