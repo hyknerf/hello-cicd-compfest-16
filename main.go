@@ -21,5 +21,5 @@ func helloHandler(w http.ResponseWriter, r *http.Request) {
 }
 
 func sayHello(name string) string {
-	return "Hello " + name
+	return "Hello " + name + "!"
 }
